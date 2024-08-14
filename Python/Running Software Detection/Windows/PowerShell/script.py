@@ -1,8 +1,11 @@
-# A Python script that can detect if a single or list of program is running.
+# !!! WORK IN PROGRESS !!!
+
+# A Python script that can check if a given executable is running. Also works with lists.
 # Credits: Alain Xu (https://github.com/InfinityAX), Traditional_Candy923 (https://www.reddit.com/user/Traditional_Candy923)
 # Version: 0.0
 # NOTES:
-#   - This version is only for Windows and has only been tested on Windows 10 64-bits.
+#   - This script utilizes the WMI PowerShell Cmdlets through the command prompt.
+#   - This version is only for Windows and has only been tested on Windows 10 22H2 Home Edition 64-bits.
 #   - The following functions do not address to potential issue where multiple software may have the same executable name.
 #   - The first few indexes in the output list for get_running_program_list() are going to contain "junk" data.
 #   - Consider adding checks for empty or known "bad" inputs.
@@ -12,10 +15,9 @@
 import os
 
 
-# Gets a list of currently running program
+# "os.popen('wmic process get description').read().split()" gets a list of currently running program
 # Returns list of running program
-def get_running_program_list()->list:
-    return os.popen('wmic process get description').read().split()
+print(os.popen('wmic process get description').read().split())
 
 
 # Checks if the user defined program is running
